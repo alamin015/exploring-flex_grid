@@ -12,6 +12,7 @@ main{
     background:linear-gradient(to right top,rgba(0, 0, 0, 0.842),rgba(27, 45, 70, 0.842)), url('./img/bg6.svg');
     background-repeat: no-repeat;
     background-size: cover;
+
 }
 
 .container{
@@ -21,6 +22,7 @@ main{
     border-radius: 10px;
     backdrop-filter: blur(2px);
     background-color: rgba(29, 29, 78, 0.349);
+    overflow: hidden;
 }
 
 .text_container,.img_container{
@@ -33,7 +35,30 @@ main{
     justify-content: space-between;
     padding: 30px;
     color: #fff;
+    position: relative;
+    pointer-events: none;
 }
+.text_container span{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    border-radius: 50%;
+    animation: zoom 1.5s infinite;
+}
+
+@keyframes zoom {
+    0%{
+        width: 0;
+        height: 0;
+        opacity: 0.4;
+    }
+    100%{
+        width: 700px;
+        height: 700px;
+        opacity: 0;
+    }
+}
+
 .info h1{
     text-align: left;
 
@@ -46,10 +71,31 @@ main{
     gap: 50px;
 }
 
+.img_container{
+    cursor: pointer;
+}
 .img_container > img{
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: left;
     border-radius: 0 10px 10px 0;
+}
+
+@media only screen and (max-width: 576px){
+    .container{
+        flex-direction: column-reverse;
+    }
+    .text_container,.img_container{
+        width: 100%;
+    }
+    .info h1{
+        font-size: 25px;
+        margin-bottom: 15px;
+    }
+    .info p{
+        font-size: 16px;
+    }
+
+   
 }
